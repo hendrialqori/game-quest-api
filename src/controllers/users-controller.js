@@ -28,10 +28,12 @@ export default class UsersController {
                 .where(not(eq(usersTable.point, 0)))
                 .limit(10);
 
+            const top_10 = await UsersController.top_10(result)
+
             // response
             return mockSuccessResponse(response, {
                 status: 200,
-                data: result,
+                data: top_10,
                 message: "Success"
             })
 
@@ -72,5 +74,21 @@ export default class UsersController {
         } catch (error) {
             next(error)
         }
+    }
+
+    /**
+     * @param {Object[]} data 
+     * @returns {Promise<Object[]>}
+     */
+    static async top_10(data) {
+        const temp = data
+        const null_data = Array.from({ length: 10 - temp.length }).fill({
+            id: null,
+            username: null,
+            point: null,
+            createdAt: null
+        })
+
+        return [...temp, ...null_data]
     }
 }
