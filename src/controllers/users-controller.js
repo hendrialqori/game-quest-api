@@ -51,8 +51,11 @@ export default class UsersController {
     static async add(req, res, next) {
         try {
             const body = req.body
+            body.point = Number(body.point)
+
             // validator
             const { username, point } = validate(UserValidation.ADD, body)
+
             // payload
             const payload = {
                 username, point,

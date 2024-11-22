@@ -14,8 +14,7 @@ const PORT = process.env.PORT || 8000
 // setting cors
 app.use(cors({
     origin: "*",
-    credentials: true,
-    methods: ["GET", "POST"]
+    credentials: false
 }))
 
 app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
@@ -27,7 +26,7 @@ app.get("/", (req, res) => {
     res.status(200).send({ message: "PING!", date: new Date() })
 })
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(apiRouter)
 

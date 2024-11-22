@@ -12,19 +12,19 @@ import { ZodError } from "zod"
 
 export function errorMiddleware(error, _request, response, _next) {
     if (error instanceof ZodError) {
-        mockErrorResponse(response, {
+        return mockErrorResponse(response, {
             status: error.status,
             message: error.flatten().fieldErrors
         })
 
     } else if (error instanceof ResponseError) {
-        mockErrorResponse(response, {
+        return mockErrorResponse(response, {
             status: error.status,
             message: error.message
         })
 
     } else {
-        mockErrorResponse(response, {
+        return mockErrorResponse(response, {
             status: 500,
             message: error.message
         })
