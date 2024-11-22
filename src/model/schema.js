@@ -4,7 +4,7 @@ const USERS = "users";
 
 export const users = mysqlTable(USERS, {
     id: int("id").autoincrement().primaryKey(),
-    username: varchar("username", { length: 255 }).unique().notNull(),
+    username: varchar("username", { length: 255 }).notNull(),
     point: int("point").notNull(),
     createdAt: timestamp("created_at").defaultNow()
 })

@@ -15,6 +15,13 @@
       "when": 1732009481944,
       "tag": "0001_nice_may_parker",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1732266441905,
+      "tag": "0002_brainy_korvac",
+      "breakpoints": true
     }
   ]
 }

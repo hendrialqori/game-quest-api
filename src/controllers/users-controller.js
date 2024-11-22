@@ -1,4 +1,4 @@
-import { asc, eq, not } from "drizzle-orm";
+import { desc, eq, not } from "drizzle-orm";
 import { db } from "../model/db.js";
 import { users as usersTable } from "../model/schema.js";
 import { mockSuccessResponse } from "../utils/mock.js";
@@ -24,7 +24,7 @@ export default class UsersController {
             const result = await db
                 .select()
                 .from(usersTable)
-                .orderBy(asc(usersTable.point))
+                .orderBy(desc(usersTable.point))
                 .where(not(eq(usersTable.point, 0)))
                 .limit(10);
 
